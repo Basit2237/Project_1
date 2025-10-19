@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Users</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h2>🧑‍💻 User Dashboard</h2>
+    <div>
+      <a href="/">Home</a>
+      <a href="/view">View All</a>
+      <a href="/newUser">Add New</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>All Users</h1>
+
+    <div class="search-bar">
+      <form action="/view" method="GET">
+        <input type="text" name="search" placeholder="Search by email..." />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div style="margin-bottom: 40px; margin-top: 30px;">
+      <a href="/newUser" class="filter-btn">➕ Add New User</a>
+    </div>
+
+    <div>
+      <a href="/view" class="filter-btn">All</a>
+      <a href="/view?role=Admin" class="filter-btn">Admin</a>
+      <a href="/view?role=Student" class="filter-btn">Student</a>
+      <a href="/view?role=Teacher" class="filter-btn">Teacher</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Role</th>
+          <th>Created At</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.address %></td>
+            <td><%= user.role %></td>
+            <td><%= new Date(user.created_at).toDateString() %></td>
+            <td>
+              <a href="/edit/<%= user.id %>" class="action-btn edit-btn" style="text-decoration: none; padding: 3px 25px;">✏️ Edit</a>
+            </td>
+            <td>
+              <form action="/delete/<%= user.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="action-btn delete-btn">🗑️ Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

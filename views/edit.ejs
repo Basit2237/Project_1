@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h2>🧑‍💻 User Dashboard</h2>
+    <div>
+      <a href="/">Home</a>
+      <a href="/view">View All</a>
+      <a href="/newUser">Add New</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Edit User</h2>
+
+    <form action="/edit/<%= user.id %>?_method=PUT" method="POST">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= user.name %>" required>
+
+      <label>Email</label>
+      <input type="email" name="email" value="<%= user.email %>" required>
+
+      <label>Address</label>
+      <input type="text" name="address" value="<%= user.address %>" required>
+
+      <label>Role</label>
+      <select name="role" required>
+        <option value="Admin" <%= user.role === 'Admin' ? 'selected' : '' %>>Admin</option>
+        <option value="Student" <%= user.role === 'Student' ? 'selected' : '' %>>Student</option>
+        <option value="Teacher" <%= user.role === 'Teacher' ? 'selected' : '' %>>Teacher</option>
+      </select>
+
+      <button type="submit">Update User</button>
+    </form>
+  </div>
+</body>
+</html>

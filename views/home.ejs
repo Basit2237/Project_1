@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h2>🧑‍💻 User Dashboard</h2>
+    <div>
+      <a href="/">Home</a>
+      <a href="/view">View All</a>
+      <a href="/newUser">Add New</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="home-title">Welcome to the User Management System</h1>
+    <p class="user-count">Total Users: <strong><%= count %></strong></p>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="/view" class="filter-btn">View All Users</a>
+    </div>
+  </div>
+</body>
+</html>
